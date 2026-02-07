@@ -20,7 +20,7 @@ class Solution {
             }else{
                 temp1.next = temp2;
                 temp1 = temp2;
-                temp2 = temp2.next;
+               // temp2 = temp2.next;
             }
         }
         temp1.next = null;
