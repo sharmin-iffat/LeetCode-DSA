@@ -18,10 +18,6 @@ class Solution {
             if(st.isEmpty() || temp.val <= st.peek().val){
                 st.push(temp);
             } 
-            // else if(!st.isEmpty() && temp.val <= st.peek()){
-            //     st.push(temp);
-            //     temp = temp.next;
-            // } 
             else{
                 while(!st.isEmpty()&& temp.val > st.peek().val){
                     st.pop();
