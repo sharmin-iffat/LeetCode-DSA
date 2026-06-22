@@ -1,14 +1,14 @@
 class Solution {
     public char repeatedCharacter(String s) {
-        HashSet<Character> set = new HashSet<>();
+        boolean[] seen = new boolean[26];
 
         for(int i=0; i<s.length(); i++){
             char ch = s.charAt(i);
 
-            if(set.contains(ch)){
+            if(seen[ch - 'a']){
                 return ch;
             }
-            set.add(ch);
+            seen[ch - 'a'] = true;
         }
         return 'a';
     }
