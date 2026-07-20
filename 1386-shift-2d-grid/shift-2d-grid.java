@@ -16,7 +16,6 @@ class Solution {
         }
 
         for(int i=0; i<row; i++){
-            List<Integer> list = new ArrayList<>();
             for(int j=0; j<col; j++){
                 int newIdx = i*col + j +k;
                 int newRow = (newIdx/col)%row;
