@@ -1,34 +1,33 @@
 class Solution {
     public int maxActiveSectionsAfterTrade(String s) {
-        int totalOnes = 0;
-        List<Integer> zeroBlocks = new ArrayList<>();
-        int currZeros = 0;
+        int totalOnce = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+        int currZeroes = 0;
 
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == '1') {
-                totalOnes++;
-                if (currZeros > 0) {
-                    zeroBlocks.add(currZeros);
-                    currZeros = 0;
+        for(int i=0; i<s.length(); i++){
+            char ch = s.charAt(i);
+            if(ch == '1'){
+                totalOnce++;
+                if(currZeroes > 0){
+                    list.add(currZeroes);
+                    currZeroes = 0;
                 }
-            } else {
-                currZeros++;
+            }else{
+                currZeroes++;
             }
         }
-        if (currZeros > 0) {
-            zeroBlocks.add(currZeros);
+        if(currZeroes > 0){
+            list.add(currZeroes);
         }
-
-        if (zeroBlocks.size() < 2) {
-            return totalOnes;
+        if(list.size() < 2){
+            return totalOnce;
         }
+        int maxZeroes = 0;
 
-        int maxZeroGain = 0;
-        for (int i = 0; i < zeroBlocks.size() - 1; i++) {
-            maxZeroGain = Math.max(maxZeroGain, zeroBlocks.get(i) + zeroBlocks.get(i + 1));
+        for(int i=0; i<list.size()-1; i++){
+            maxZeroes = Math.max(maxZeroes, (list.get(i)+ list.get(i+1)));
         }
-
-        return totalOnes + maxZeroGain;
+        
+        return totalOnce + maxZeroes;
     }
 }
