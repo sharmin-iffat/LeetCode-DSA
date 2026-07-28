@@ -3,7 +3,7 @@ class Solution {
 
         if(n==1) return "1";
 
-        String s = countAndSay(n-1);
+        String s = countAndSay(n-1) + "#";
 
         String ans = "";
 
@@ -18,10 +18,6 @@ class Solution {
                 i=j;
             }
         }
-        int freq = j-i;
-        ans += freq;
-        ans += s.charAt(i);
-        i=j;
         
         return ans;
     }
