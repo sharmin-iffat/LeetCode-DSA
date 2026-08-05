@@ -13,13 +13,11 @@ class Solution {
         maxAvg = Math.max(maxAvg, avg);
 
         for(r=k; r<n; r++){
-            
-            maxAvg = Math.max(maxAvg, avg);
             sum -= nums[l++];
             sum += nums[r];
             avg = sum/k;
+            maxAvg = Math.max(maxAvg, avg);
         }
-        maxAvg = Math.max(maxAvg, avg);
         return maxAvg;
     }
 }
