@@ -1,24 +1,25 @@
 class Solution {
     public int rob(int[] nums) {
         int n = nums.length;
-        if(n == 1) return nums[0];
-        int case1 = robLinear(nums, 0, n-2);
-        int case2 = robLinear(nums, 1, n-1);
-        
-        return Math.max(case1, case2);
+        if(n==1) return nums[0];
+        if(n==2) return Math.max(nums[0], nums[1]);
 
-    }
-    private int robLinear(int[] nums, int l, int r){
-        int len = r - l + 1;
-        int[] dp = new int[len];
+        int[] dp1 = new int[n-1];
+        int[] dp2 = new int[n-1];
 
-        dp[0] = nums[l];
+        dp1[0] = nums[0];
+        dp1[1] = Math.max(nums[0], nums[1]);
 
-        if(len > 1) dp[1] = Math.max(nums[l], nums[l+1]);
+        dp2[0] = nums[1];
+        dp2[1] = Math.max(nums[2], nums[1]);
 
-        for(int i=2; i<len; i++){
-            dp[i] = Math.max(dp[i-1], nums[l + i] + dp[i-2]);
+        for(int i=2; i<n-1; i++){
+            dp1[i] = Math.max(dp1[i-1], dp1[i-2]+ nums[i]);
         }
-        return dp[len-1];
+        for(int i=2; i<n-1; i++){
+            dp2[i] = Math.max(dp2[i-1], dp2[i-2]+ nums[i+1]);
+        }
+        return Math.max(dp1[n-2], dp2[n-2]);
+
     }
 }
