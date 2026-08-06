@@ -3,15 +3,11 @@ class Solution {
         int maxReach = 0;
 
         for(int i=0; i<nums.length; i++){
-            if(i > maxReach){
-                return false;
-            }
+            if(i > maxReach) return false;
 
             maxReach = Math.max(maxReach, i+nums[i]);
 
-            if(maxReach >= nums.length){
-                return true;
-            }
+            if(maxReach == nums.length) return true;
         }
         return true;
     }
