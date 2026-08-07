@@ -7,15 +7,19 @@ class Solution {
         );
 
         for(int i=0; i<arr.length; i++){
-            for(int j=i+1; j<arr.length; j++){
-                pq.add(new int[]{i, j});
-            }
+            pq.add(new int[]{0, i});
+            
         }
         
 
-        while(k != 1){
-            pq.remove();
-            k--;
+        while(--k > 0){
+            int i = pq.peek()[0];
+            int j = pq.poll()[1];
+
+            if(i+1 < j){
+                pq.offer(new int[]{i+1, j});
+            }
+           
         }
         int[] ans = pq.poll();
 
