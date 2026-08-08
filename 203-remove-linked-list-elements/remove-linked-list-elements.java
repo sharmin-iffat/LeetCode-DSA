@@ -10,20 +10,15 @@
  */
 class Solution {
     public ListNode removeElements(ListNode head, int val) {
-        if (head == null) return null;
+        return helper(head, val);
+    }
+    private ListNode helper(ListNode head, int val) {
+        if(head == null) return null;
+        head.next = helper(head.next, val);
 
-        ListNode dummy =  new ListNode(0);
-        dummy.next = head;
-
-        ListNode curr = dummy;
-
-        while(curr != null && curr.next != null){
-            if(curr.next.val == val){
-                curr.next = curr.next.next;
-            }else{
-                curr = curr.next;
-            }
+        if(head.val == val){
+            head = head.next;
         }
-        return dummy.next;
+        return head;
     }
 }
