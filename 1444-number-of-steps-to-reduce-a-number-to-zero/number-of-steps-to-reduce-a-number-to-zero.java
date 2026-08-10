@@ -2,14 +2,12 @@ class Solution {
     public int numberOfSteps(int num) {
         return helper(num, 0);
     }
-    int helper(int num, int steps){
-        if(num == 0) return steps;
-
-        if(num % 2 == 0){
-            num = num/2;
-        }else{
-            num = num-1;
+    private int helper(int num, int count) {
+        if(num == 0){
+            return count;
         }
-        return helper(num, steps + 1);
+        count++;
+        if(num % 2 == 0) return helper(num/2, count);
+        else return helper(num-1, count);
     }
 }
