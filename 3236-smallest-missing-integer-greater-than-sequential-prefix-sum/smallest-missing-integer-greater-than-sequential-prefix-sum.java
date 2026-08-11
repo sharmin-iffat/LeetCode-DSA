@@ -9,10 +9,13 @@ class Solution {
             }
             sum += nums[i];
         }
-        Arrays.sort(nums);
+        HashSet<Integer> set = new HashSet<>();
 
         for(int i=0; i<n; i++){
-            if(nums[i] == sum) sum +=1;
+            set.add(nums[i]);
+        }
+        while(set.contains(sum)){
+            sum++;
         }
         return sum;
     }
